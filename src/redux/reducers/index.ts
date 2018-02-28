@@ -1,13 +1,23 @@
-import { combineReducers } from 'redux';
-import coursesReducer from './courseReducer';
+import courses from './courseReducer';
+import authors from './authorReducer';
+import ajaxCallsInProgress from './ajaxStatusReducer';
 import { Course } from './courseModel';
+import { Author } from './authorModel';
 
-export type State = Readonly<{
+export interface State {
     courses: Course[];
-}>;
+    authors: Author[];
+    ajaxCallsInProgress: number;
+}
 
-const state = combineReducers<State>({
-    courses: coursesReducer
-});
+export const initialState = {
+    authors: [],
+    courses: [],
+    ajaxCallsInProgress: 0
+};
 
-export default state;
+export default {
+    courses,
+    authors,
+    ajaxCallsInProgress
+};

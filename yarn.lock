@@ -87,6 +87,20 @@
     "@types/node" "*"
     "@types/react" "*"
 
+"@types/react-notification-system-redux@^1.1.5":
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/@types/react-notification-system-redux/-/react-notification-system-redux-1.1.5.tgz#5dd95eea0a1d74c6c72b7634e3b3a1cbbd77e14f"
+  dependencies:
+    "@types/react" "*"
+    "@types/react-notification-system" "*"
+    redux "^3.6.0"
+
+"@types/react-notification-system@*", "@types/react-notification-system@^0.2.36":
+  version "0.2.36"
+  resolved "https://registry.yarnpkg.com/@types/react-notification-system/-/react-notification-system-0.2.36.tgz#7fe0c66030cabaff046838f26b7b2853c32b47ea"
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-redux@^5.0.15":
   version "5.0.15"
   resolved "https://registry.yarnpkg.com/@types/react-redux/-/react-redux-5.0.15.tgz#420af2c702ac7aab321cf45bb7d3cb2503dd24d5"
@@ -126,12 +140,6 @@
   resolved "https://registry.yarnpkg.com/@types/redux-devtools-extension/-/redux-devtools-extension-2.13.2.tgz#b2e09a8c163b2b0f5072e6a5ac41474000df2111"
   dependencies:
     redux-devtools-extension "*"
-
-"@types/redux-immutable-state-invariant@^2.0.4":
-  version "2.0.4"
-  resolved "https://registry.yarnpkg.com/@types/redux-immutable-state-invariant/-/redux-immutable-state-invariant-2.0.4.tgz#546d9565632b224626e2088ae65c6c513ef114a1"
-  dependencies:
-    redux "^3.6.0"
 
 "@types/redux-thunk@^2.1.0":
   version "2.1.0"
@@ -1259,6 +1267,14 @@ create-hmac@^1.1.0, create-hmac@^1.1.2, create-hmac@^1.1.4:
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
 
+create-react-class@^15.5.1:
+  version "15.6.3"
+  resolved "https://registry.yarnpkg.com/create-react-class/-/create-react-class-15.6.3.tgz#2d73237fb3f970ae6ebe011a9e66f46dbca80036"
+  dependencies:
+    fbjs "^0.8.9"
+    loose-envify "^1.3.1"
+    object-assign "^4.1.1"
+
 cross-spawn@5.1.0, cross-spawn@^5.0.1:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-5.1.0.tgz#e8bd0efee58fcff6f8f94510a0a554bbfa235449"
@@ -2080,7 +2096,7 @@ fb-watchman@^2.0.0:
   dependencies:
     bser "^2.0.0"
 
-fbjs@^0.8.16:
+fbjs@^0.8.16, fbjs@^0.8.9:
   version "0.8.16"
   resolved "https://registry.yarnpkg.com/fbjs/-/fbjs-0.8.16.tgz#5e67432f550dc41b572bf55847b8aca64e5337db"
   dependencies:
@@ -2871,7 +2887,7 @@ interpret@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/interpret/-/interpret-1.1.0.tgz#7ed1b1410c6a0e0f78cf95d3b8440c63f78b8614"
 
-invariant@^2.0.0, invariant@^2.1.0, invariant@^2.2.1, invariant@^2.2.2:
+invariant@^2.0.0, invariant@^2.2.1, invariant@^2.2.2:
   version "2.2.3"
   resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.3.tgz#1a827dfde7dcbd7c323f0ca826be8fa7c5e9d688"
   dependencies:
@@ -3721,7 +3737,7 @@ json-stable-stringify@^1.0.1:
   dependencies:
     jsonify "~0.0.0"
 
-json-stringify-safe@^5.0.1, json-stringify-safe@~5.0.1:
+json-stringify-safe@~5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/json-stringify-safe/-/json-stringify-safe-5.0.1.tgz#1296a2d58fd45f19a0f6ce01d65701e2c735b6eb"
 
@@ -5398,6 +5414,14 @@ prop-types@^15.5.4, prop-types@^15.6.0:
     loose-envify "^1.3.1"
     object-assign "^4.1.1"
 
+prop-types@^15.5.6:
+  version "15.6.1"
+  resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.1.tgz#36644453564255ddda391191fb3a125cbdf654ca"
+  dependencies:
+    fbjs "^0.8.16"
+    loose-envify "^1.3.1"
+    object-assign "^4.1.1"
+
 proxy-addr@~2.0.2:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/proxy-addr/-/proxy-addr-2.0.3.tgz#355f262505a621646b3130a728eb647e22055341"
@@ -5569,6 +5593,21 @@ react-error-overlay@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-3.0.0.tgz#c2bc8f4d91f1375b3dad6d75265d51cd5eeaf655"
 
+react-notification-system-redux@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/react-notification-system-redux/-/react-notification-system-redux-1.2.0.tgz#14fb0915c72e4c12d9983ffe07254e2cd19ec5df"
+  dependencies:
+    prop-types "^15.6.0"
+    react-notification-system "^0.2.x"
+
+react-notification-system@^0.2.17, react-notification-system@^0.2.x:
+  version "0.2.17"
+  resolved "https://registry.yarnpkg.com/react-notification-system/-/react-notification-system-0.2.17.tgz#a60eddbb62225ad8f9fc5d7837546bf6cdb36818"
+  dependencies:
+    create-react-class "^15.5.1"
+    object-assign "^4.0.1"
+    prop-types "^15.5.6"
+
 react-redux@^5.0.7:
   version "5.0.7"
   resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-5.0.7.tgz#0dc1076d9afb4670f993ffaef44b8f8c1155a4c8"
@@ -5591,9 +5630,13 @@ react-router-dom@^4.2.2:
     react-router "^4.2.0"
     warning "^3.0.0"
 
-react-router-redux@^4.0.8:
-  version "4.0.8"
-  resolved "https://registry.yarnpkg.com/react-router-redux/-/react-router-redux-4.0.8.tgz#227403596b5151e182377dab835b5d45f0f8054e"
+react-router-redux@^5.0.0-alpha.9:
+  version "5.0.0-alpha.9"
+  resolved "https://registry.yarnpkg.com/react-router-redux/-/react-router-redux-5.0.0-alpha.9.tgz#825431516e0e6f1fd93b8807f6bd595e23ec3d10"
+  dependencies:
+    history "^4.7.2"
+    prop-types "^15.6.0"
+    react-router "^4.2.0"
 
 react-router@^4.2.0:
   version "4.2.0"
@@ -5712,13 +5755,6 @@ reduce-function-call@^1.0.1:
 redux-devtools-extension@*, redux-devtools-extension@^2.13.2:
   version "2.13.2"
   resolved "https://registry.yarnpkg.com/redux-devtools-extension/-/redux-devtools-extension-2.13.2.tgz#e0f9a8e8dfca7c17be92c7124958a3b94eb2911d"
-
-redux-immutable-state-invariant@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/redux-immutable-state-invariant/-/redux-immutable-state-invariant-2.1.0.tgz#308fd3cc7415a0e7f11f51ec997b6379c7055ce1"
-  dependencies:
-    invariant "^2.1.0"
-    json-stringify-safe "^5.0.1"
 
 redux-thunk@*, redux-thunk@^2.2.0:
   version "2.2.0"
