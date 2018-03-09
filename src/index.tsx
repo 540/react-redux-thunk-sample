@@ -17,8 +17,8 @@ import history from './lib/history';
 
 const store = configureStore(initialState);
 
-store.dispatch(loadCourses);
-store.dispatch(loadAuthors);
+store.dispatch(loadCourses());
+store.dispatch(loadAuthors());
 
 ReactDOM.render(
     <Provider store={store}>

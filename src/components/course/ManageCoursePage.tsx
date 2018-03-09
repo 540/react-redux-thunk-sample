@@ -1,18 +1,17 @@
 import * as React from 'react';
-import * as courseActions from '../../redux/actions/courseActions';
 import { loadCourses, saveCourse } from '../../redux/actions/courseActions';
 import CourseForm from './CourseForm';
-import { Course } from '../../redux/reducers/courseModel';
+import { builder as CourseBuilder, Course } from '../../redux/reducers/courseModel';
 import { Author } from '../../redux/reducers/authorModel';
 import { Action, bindActionCreators } from 'redux';
 import { connect, Dispatch } from 'react-redux';
 import { Option } from '../common/SelectInput';
-import { RouteComponentProps } from 'react-router-dom';
+import { authorsFormattedForDropDown } from '../../redux/reducers/authorSelectors';
+import { RouteComponentProps } from 'react-router';
 
 type Props = Readonly<{
     course: Course;
     authors: Option[];
-    saving: boolean;
     actions: {
         loadCourses: typeof loadCourses;
         saveCourse: typeof saveCourse;
@@ -25,7 +24,6 @@ type State = Readonly<{
     errors: Errors;
     redirectToCourses?: boolean;
     type: string;
-    saving: boolean;
 }>;
 
 export type Errors = Readonly<{
@@ -35,25 +33,21 @@ export type Errors = Readonly<{
     length?: string;
 }>;
 
-class ManageCoursePage extends React.Component<Props, State> {
+export class ManageCoursePage extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props);
 
         this.state = {
-            course: props.course,
+            course: props.course || {},
             authors: props.authors,
             errors: {},
             type: '',
-            saving: false
         };
     }
 
     componentWillReceiveProps(newProps: Props) {
         if (this.props.course.id !== newProps.course.id) {
             this.setState({course: newProps.course});
-        }
-        if (this.props.saving !== newProps.saving) {
-            this.setState({saving: newProps.saving});
         }
     }
 
@@ -65,7 +59,7 @@ class ManageCoursePage extends React.Component<Props, State> {
                 onChange={this.onFieldChange}
                 allAuthors={this.props.authors}
                 onSave={this.saveCourse}
-                saving={this.state.saving}
+                saving={false}
             />
         );
     }
@@ -74,7 +68,24 @@ class ManageCoursePage extends React.Component<Props, State> {
         this.setState({course: {...this.state.course, [field]: value}})
 
     private saveCourse = () => {
+        if (!this.courseFormIsValid()) {
+            return;
+        }
+
         this.props.actions.saveCourse(this.state.course);
+    }
+
+    private courseFormIsValid = () => {
+        let formIsValid = true;
+        let errors = {};
+
+        if (this.state.course.title.length < 5) {
+            errors = {title: 'Title must be at least 5 characters.'};
+            formIsValid = false;
+        }
+
+        this.setState({errors: errors});
+        return formIsValid;
     }
 }
 
@@ -85,27 +96,17 @@ const getCourseById = (courses: Course[], id: string) => {
 const mapStateToProps = (
     state: { authors: Author[], courses: Course[], ajaxCallsInProgress: number },
     ownProps: Props) => {
-    let course = getCourseById(state.courses, ownProps.match.params.id);
-
-    if (!course) {
-        course = {id: '', watchHref: '', title: '', authorId: '', length: 0, category: ''};
-    }
-
-    const authorsFormattedForDropDown = state.authors.map(author => ({
-        value: author.id,
-        text: author.firstName + ' ' + author.lastName
-    }));
+    const course = getCourseById(state.courses, ownProps.match!.params.id) || CourseBuilder.empty();
 
     return {
         course: course,
-        authors: authorsFormattedForDropDown,
-        saving: state.ajaxCallsInProgress > 0
+        authors: authorsFormattedForDropDown(state.authors),
     };
 };
 
 const mapDispatchToProps = (dispatch: Dispatch<Action>) => {
     return {
-        actions: bindActionCreators(courseActions, dispatch)
+        actions: bindActionCreators({loadCourses, saveCourse}, dispatch)
     };
 };
 

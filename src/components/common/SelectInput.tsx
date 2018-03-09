@@ -11,8 +11,8 @@ type Props = Readonly<{
 }>;
 
 export type Option = Readonly<{
-    value: string
-    text: string
+    value: string;
+    text: string;
 }>;
 
 const SelectInput: React.StatelessComponent<Props> = props => {

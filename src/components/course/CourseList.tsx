@@ -19,7 +19,7 @@ const CourseList: React.StatelessComponent<Props> = ({courses}) => {
             </tr>
             </thead>
             <tbody>
-            {courses.map((course: Course) => (<CourseListRow key={course.id} course={course}/>))}
+            {courses.map(course => (<CourseListRow key={course.id} course={course}/>))}
             </tbody>
         </table>
     );

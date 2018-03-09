@@ -4,5 +4,9 @@ export type Course = Readonly<{
     watchHref: string;
     authorId: string;
     category: string;
-    length: number;
+    length: string;
 }>;
+
+export const builder = {
+    empty: () => ({id: '', watchHref: '', title: '', authorId: '', length: '', category: ''})
+};

@@ -2,15 +2,12 @@ import * as React from 'react';
 import { FormEvent } from 'react';
 import { Course } from '../../redux/reducers/courseModel';
 import TextInput from '../common/TextInput';
-import SelectInput from '../common/SelectInput';
+import SelectInput, { Option } from '../common/SelectInput';
 import { Errors } from './ManageCoursePage';
 
 type Props = Readonly<{
     course: Course;
-    allAuthors: Array<{
-        value: string
-        text: string
-    }>;
+    allAuthors: Array<Option>;
     onSave: () => void;
     onChange: (field: string, value: string) => void,
     saving?: boolean;

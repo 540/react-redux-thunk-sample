@@ -8,12 +8,9 @@ import { beginAjaxCall } from './ajaxStatusActions';
 const loadAuthorsSuccess = (authors: Author[]) =>
     ({type: types.LoadAuthorsSuccess, authors});
 
-export const loadAuthors = (dispatch: Dispatch<Action>) => {
+export const loadAuthors = () => async (dispatch: Dispatch<Action>) => {
     dispatch(beginAjaxCall());
 
-    authorApi.getAllAuthors()
-        .then((authors: Author[]) => dispatch(loadAuthorsSuccess(authors)))
-        .catch(error => {
-            throw(error);
-        });
+    const authors: Author[] = await authorApi.getAllAuthors();
+    dispatch(loadAuthorsSuccess(authors));
 };
